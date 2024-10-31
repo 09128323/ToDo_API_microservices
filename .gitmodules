@@ -1,0 +1,6 @@
+[submodule "api_gateway"]
+	path = api_gateway
+	url = https://github.com/yourusername/api_gateway.git
+[submodule "project_service"]
+	path = project_service
+	url = https://github.com/yourusername/project_service.git
