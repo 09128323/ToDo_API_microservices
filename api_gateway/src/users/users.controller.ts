@@ -3,13 +3,19 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { Roles } from 'src/auth/roles-auth.decorator';
 import { AddRoleDto } from './dto/add-role.dto';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+    ApiBearerAuth,
+    ApiOperation,
+    ApiResponse,
+    ApiTags,
+} from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { User } from 'src/entities/users.entity';
 import { Role } from 'src/entities/roles.entity';
 
 @ApiTags('Пользователи')
+@ApiBearerAuth('access-token')
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles('ADMIN')
 @Controller('users')

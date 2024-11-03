@@ -24,7 +24,6 @@ export class TasksService {
         columnId: number,
         userId: number
     ): Promise<Task> {
-        // Проверка прав доступа
         const column = await this.columnsRepository.findOne({
             where: { id: columnId, project: { userId } },
         });
@@ -33,7 +32,6 @@ export class TasksService {
             throw new UnauthorizedException('Нет доступа к данной колонке');
         }
 
-        // Получение максимального значения позиции
         const result = await this.tasksRepository
             .createQueryBuilder('task')
             .select('MAX(task.position)', 'max')
@@ -42,7 +40,6 @@ export class TasksService {
 
         const maxPosition = result?.max || 0;
 
-        // Создание новой задачи
         const task = this.tasksRepository.create({
             ...createTaskDto,
             column,

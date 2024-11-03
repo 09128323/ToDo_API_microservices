@@ -18,10 +18,12 @@ import {
     ApiResponse,
     ApiBody,
     ApiParam,
+    ApiBearerAuth,
 } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @ApiTags('Проекты')
+@ApiBearerAuth('access-token')
 @UseGuards(JwtAuthGuard)
 @Controller('projects')
 export class ProjectsController {

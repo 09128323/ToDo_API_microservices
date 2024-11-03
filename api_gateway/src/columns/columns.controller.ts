@@ -23,7 +23,7 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { GetUserId } from 'src/auth/get-userId.decorator';
 
 @ApiTags('Столбцы')
-@ApiBearerAuth()
+@ApiBearerAuth('access-token')
 @UseGuards(JwtAuthGuard)
 @Controller('columns')
 export class ColumnsController {

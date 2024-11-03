@@ -23,7 +23,7 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { GetUserId } from 'src/auth/get-userId.decorator';
 
 @ApiTags('Tasks')
-@ApiBearerAuth()
+@ApiBearerAuth('access-token')
 @UseGuards(JwtAuthGuard)
 @Controller('tasks')
 export class TasksController {

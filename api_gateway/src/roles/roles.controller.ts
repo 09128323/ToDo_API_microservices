@@ -24,7 +24,7 @@ import { Role } from 'src/entities/roles.entity';
 import { Roles } from 'src/auth/roles-auth.decorator';
 
 @ApiTags('Roles')
-@ApiBearerAuth()
+@ApiBearerAuth('access-token')
 @UseGuards(JwtAuthGuard)
 @Controller('roles')
 @Roles('ADMIN')
